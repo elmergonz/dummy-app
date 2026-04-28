@@ -33,7 +33,7 @@ services:
       - .:/usr/src
     environment:
       - SONAR_HOST_URL=http://sonarqube:9000
-      - SONAR_TOKEN=sqp_e7d4a26f85cc30c972f05e0929956cd0fb3e21e0
+      - SONAR_TOKEN=sqp_2bf88ccd3096a6fa5720208ff3ed968e9d44bd1e
     networks:
       - sonarnet
     depends_on:
