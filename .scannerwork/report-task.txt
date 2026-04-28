@@ -1,0 +1,6 @@
+projectKey=dummy-app
+serverUrl=http://localhost:9000
+serverVersion=26.4.0.121862
+dashboardUrl=http://localhost:9000/dashboard?id=dummy-app
+ceTaskId=29cef401-194e-4fbb-8c72-25ce2ef269d0
+ceTaskUrl=http://localhost:9000/api/ce/task?id=29cef401-194e-4fbb-8c72-25ce2ef269d0
