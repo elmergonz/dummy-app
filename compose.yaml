@@ -38,6 +38,14 @@ services:
       - sonarnet
     depends_on:
       - sonarqube
+    entrypoint: >
+      /bin/sh -c "
+        cd web &&
+        npm install &&
+        npm test &&
+        cd .. &&
+        sonar-scanner
+      "
     profiles:
       - analysis 
 
