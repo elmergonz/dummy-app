@@ -26,6 +26,21 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql/data
 
+  sonar-scanner:
+    image: sonarsource/sonar-scanner-cli
+    container_name: sonar-scanner-cli
+    volumes:
+      - .:/usr/src
+    environment:
+      - SONAR_HOST_URL=http://localhost:9000
+      - SONAR_TOKEN=sqp_2bf88ccd3096a6fa5720208ff3ed968e9d44bd1e
+    networks:
+      - sonarnet
+    depends_on:
+      - sonarqube
+    profiles:
+      - analysis 
+
   redis:
     image: 'redislabs/redismod'
     ports:
