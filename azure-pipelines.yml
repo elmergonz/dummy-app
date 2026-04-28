@@ -1,0 +1,40 @@
+trigger:
+- main
+
+pool:
+  name: SelfHostedPool
+
+variables:
+  imageName: 21ssd44/dummy-app
+
+stages:
+- stage: BuildAndPush
+  displayName: Build and Push Docker Image
+  jobs:
+  - job: Docker
+    displayName: Build & Push
+    steps:
+
+    - checkout: self
+
+    - script: |
+        echo "Logging into Docker Hub..."
+        echo $(DOCKER_PASSWORD) | docker login -u $(DOCKER_USERNAME) --password-stdin
+      displayName: Docker Login
+
+    - script: |
+        echo "Building Docker image..."
+        docker build -t $(imageName):$(Build.BuildId) -f web/Dockerfile web
+        docker tag $(imageName):$(Build.BuildId) $(imageName):latest
+      displayName: Build Image
+
+    - script: |
+        echo "Pushing Docker image..."
+        docker push $(imageName):$(Build.BuildId)
+        docker push $(imageName):latest
+      displayName: Push Image
+
+    - script: |
+        echo "Listing images..."
+        docker images
+      displayName: Verify Images
