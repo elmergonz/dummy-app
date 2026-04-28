@@ -17,6 +17,7 @@ function startServer(port = 5000) {
     return { app, server };
 }
 
+/* istanbul ignore next */
 if (require.main === module) {
     startServer();
 }
