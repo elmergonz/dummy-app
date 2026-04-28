@@ -4,7 +4,8 @@
   "description": "Running Node.js and Express.js on Docker",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest --coverage"
   },
   "dependencies": {
     "express": "^5.2.1",
